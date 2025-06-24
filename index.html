@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philippine Team Wage Calculator with Holiday Pay</title>
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH5QgLFiEiLHhnlAAAMYpJREFUeNrtvXmYXlWV7/9Z+5zzTjUPqaQyzxNDAgFkEgiKtCioIDjg8DyKY4v3tt59b9++Do38vCpN292CbWu34ogKqCgIgoAMRgRCAoSMZKqkKjXPVe90ztnr98f7vlVvpSqVylig9c1zUlXn7LPPPnutvfZaa6+9DkxhClOYwhSmMIUpTGEKU5jCFKYwhSlMYQpTmMIUpjCFKUzhzxYy2Q0oQH+CEEEozZ84HeUp4KuoPD/ZrfvzhTvZDQDQvwZKgBhKab5VccABnkQ0kSsGIK8alv3zwKR3pypwd6nojIp6dWW5qlYDGRFajOg+SoJOTmsLAeUBhGbgm1NS4XhhUhlAFdhUaWxX/DxJOO/BcAZQBmSBLs1qo1rdLML
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -421,7 +421,10 @@
             </button>
         </div>
 
-
+        <div class="fix-notice">
+            ✅ <strong>FIXED:</strong> Holiday pay now correctly applies AFTER night differential and overtime differentials!<br>
+            <small>Example: Night shift on holiday = (Base + 10% night differential) × Holiday multiplier</small>
+        </div>
 
         <div class="exchange-rate">
             <h3>💱 Current Exchange Rate (Philippines)</h3>
@@ -484,24 +487,14 @@
                         <h4 id="currentMonth">June 2025</h4>
                         <button class="btn" id="nextMonth">&gt;</button>
                     </div>
-                    <div style="text-align: center; margin-bottom: 15px;">
-                        <button class="btn" id="clearDatesBtn" style="background: #ffc107; color: #333; font-size: 14px; padding: 8px 16px;">
-                            🗑️ Clear All Selected Dates
-                        </button>
-                    </div>
                     <div class="calendar-grid" id="calendarGrid">
                         <!-- Calendar days will be generated here -->
                     </div>
                 </div>
                 
                 <div>
-                    <div class="toggle-container" style="margin-bottom: 10px;">
-                        <div class="toggle-switch" id="selectedDatesToggle">
-                            <div class="toggle-slider"></div>
-                        </div>
-                        <div class="toggle-label" id="selectedDatesLabel" style="cursor: pointer;">📋 Show Selected Dates</div>
-                    </div>
-                    <div id="selectedDates" style="max-height: 300px; overflow-y: auto; background: white; padding: 15px; border-radius: 6px; border: 2px solid #ddd; display: none;">
+                    <h4>Selected Dates:</h4>
+                    <div id="selectedDates" style="max-height: 300px; overflow-y: auto; background: white; padding: 15px; border-radius: 6px; border: 2px solid #ddd;">
                         <p>Click calendar dates to add shifts</p>
                     </div>
                 </div>
@@ -509,14 +502,8 @@
         </div>
 
         <div class="section">
-            <div class="toggle-container" style="margin-bottom: 20px;">
-                <div class="toggle-switch" id="manualHoursToggle">
-                    <div class="toggle-slider"></div>
-                </div>
-                <div class="toggle-label" id="manualHoursLabel" style="cursor: pointer;">🕐 Show Manual Hours Entry</div>
-            </div>
-            <div id="manualHoursSection" style="display: none;">
-                <div class="manual-hours">
+            <h3>🕐 Manual Hours Entry</h3>
+            <div class="manual-hours">
                 <div class="form-group">
                     <label for="manualRegular">⏱️ Manual Regular Hours</label>
                     <input type="number" id="manualRegular" placeholder="0" step="0.25" min="0">
@@ -562,7 +549,6 @@
                     <input type="text" id="manualHolidayNote" placeholder="Note (optional)" style="margin-top: 5px; font-size: 12px; padding: 6px;">
                 </div>
             </div>
-            </div>
         </div>
 
         <div class="section">
@@ -588,10 +574,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3);">
-                        <strong>📅 Pay Period: <span id="payPeriod">Not calculated</span></strong><br>
-                        <small style="margin-top: 10px; display: block; font-style: italic;">
-                            ℹ️ Variations of up to 2,000 PHP from an existing payslip are considered acceptable deviations.
-                        </small>
+                        <strong>📅 Pay Period: <span id="payPeriod">Not calculated</span></strong>
                     </div>
                 </div>
             </div>
@@ -762,41 +745,6 @@
         // Start Over button
         document.getElementById('startOverBtn').addEventListener('click', startOver);
 
-        // Clear Dates button
-        document.getElementById('clearDatesBtn').addEventListener('click', clearAllDates);
-
-        // Selected Dates toggle
-        document.getElementById('selectedDatesToggle').addEventListener('click', function() {
-            const section = document.getElementById('selectedDates');
-            const label = document.getElementById('selectedDatesLabel');
-            
-            section.style.display = section.style.display === 'none' ? 'block' : 'none';
-            this.classList.toggle('active');
-            
-            label.textContent = section.style.display === 'none' ? 
-                '📋 Show Selected Dates' : '📋 Hide Selected Dates';
-        });
-
-        document.getElementById('selectedDatesLabel').addEventListener('click', function() {
-            document.getElementById('selectedDatesToggle').click();
-        });
-
-        // Manual Hours toggle
-        document.getElementById('manualHoursToggle').addEventListener('click', function() {
-            const section = document.getElementById('manualHoursSection');
-            const label = document.getElementById('manualHoursLabel');
-            
-            section.style.display = section.style.display === 'none' ? 'block' : 'none';
-            this.classList.toggle('active');
-            
-            label.textContent = section.style.display === 'none' ? 
-                '🕐 Show Manual Hours Entry' : '🕐 Hide Manual Hours Entry';
-        });
-
-        document.getElementById('manualHoursLabel').addEventListener('click', function() {
-            document.getElementById('manualHoursToggle').click();
-        });
-
         // Update Exchange Rate button
         document.getElementById('updateRateBtn').addEventListener('click', updateExchangeRate);
 
@@ -844,14 +792,6 @@
             }
         }
 
-        function clearAllDates() {
-            scheduleData = {};
-            renderCalendar();
-            updateSelectedDatesDisplay();
-            updateCalculations();
-            alert('All selected dates have been cleared. Agent information and shift selection preserved.');
-        }
-
         function startOver() {
             // Clear all inputs and state
             document.getElementById('agentName').value = '';
@@ -885,21 +825,6 @@
             breakdown.classList.remove('show');
             toggleSwitch.classList.remove('active');
             toggleLabel.textContent = '📊 Show Daily Breakdown';
-            
-            // Reset other toggles to default closed state
-            const selectedDatesSection = document.getElementById('selectedDates');
-            const selectedDatesToggle = document.getElementById('selectedDatesToggle');
-            const selectedDatesLabel = document.getElementById('selectedDatesLabel');
-            selectedDatesSection.style.display = 'none';
-            selectedDatesToggle.classList.remove('active');
-            selectedDatesLabel.textContent = '📋 Show Selected Dates';
-            
-            const manualHoursSection = document.getElementById('manualHoursSection');
-            const manualHoursToggle = document.getElementById('manualHoursToggle');
-            const manualHoursLabel = document.getElementById('manualHoursLabel');
-            manualHoursSection.style.display = 'none';
-            manualHoursToggle.classList.remove('active');
-            manualHoursLabel.textContent = '🕐 Show Manual Hours Entry';
             
             document.getElementById('breakdownContent').innerHTML = '<p>Add some shifts to see the breakdown</p>';
             document.getElementById('dateBreakdownContent').innerHTML = '<p>Add some shifts to see the date breakdown</p>';
