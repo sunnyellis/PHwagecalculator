@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philippine Team Wage Calculator with Holiday Pay</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇵🇭</text></svg>">
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
     <style>
         * {
             margin: 0;
@@ -426,24 +426,44 @@
 
         <div class="exchange-rate">
             <h3>💱 Current Exchange Rate (Philippines)</h3>
-            <p><strong>1 USD = <span id="exchangeRateValue">55.77</span> PHP</strong></p>
+            <p><small>This calculator is based on PHP. USD amounts are for reference only.</small></p>
+            <p><strong>1 PHP = $<span id="exchangeRateValue">0.0179</span> USD</strong></p>
             <p><small>Last updated: <span id="lastUpdated">June 9, 2025 (Philippine Time)</span></small></p>
             <button class="btn" id="updateRateBtn" style="background: #28a745; margin-top: 10px; font-size: 14px; padding: 8px 16px;">
                 🔄 Update Exchange Rate
             </button>
         </div>
 
-        <div class="holiday-legend">
-            <h3>🎉 Philippine Holiday Legend</h3>
-            <div class="legend-item">
-                <div class="legend-color legend-regular"></div>
-                <span><strong>Regular Holiday:</strong> 200% of enhanced rate (base + differentials) + 30% overtime if applicable</span>
+        <div class="section">
+            <div class="toggle-container" style="margin-bottom: 10px;">
+                <div class="toggle-switch" id="holidayLegendToggle">
+                    <div class="toggle-slider"></div>
+                </div>
+                <div class="toggle-label" id="holidayLegendLabel" style="cursor: pointer;">🎉 Show Holiday Rates and Shift Differentials</div>
             </div>
-            <div class="legend-item">
-                <div class="legend-color legend-special"></div>
-                <span><strong>Special Non-Working Holiday:</strong> 130% of enhanced rate (base + differentials) + 30% overtime if applicable</span>
+            <div class="holiday-legend" id="holidayLegendSection" style="display: none;">
+                <div class="legend-item">
+                    <span><strong>Overnight Differential:</strong> +10% of base rate. Applies to hours worked between 10P and 6AM PHT.</span>
+                </div>
+                <div class="legend-item">
+                    <span><strong>Overtime Differential:</strong> +25% of base rate. Applies to all hours worked beyond 8 hours in a 24 hour period.</span>
+                </div>
+                <div class="legend-item" style="margin-top: 15px;">
+                    <div class="legend-color legend-special"></div>
+                    <span><strong>Special Non-Working Holiday:</strong> 130% of enhanced rate (base + differentials) + 30% overtime if applicable</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color legend-regular"></div>
+                    <span><strong>Regular Holiday:</strong> 200% of enhanced rate (base + differentials) + 30% overtime if applicable</span>
+                </div>
+                <div class="legend-item" style="margin-left: 30px; margin-bottom: 8px;">
+                    <span style="font-style: italic;">All employees will be paid 8 hours at the base rate for regular holidays, even if they do not have a scheduled shift that day. This calculator will automatically add 8 hours of base pay for all regular holidays, even if no shift for that date is selected.</span>
+                </div>
+                <div class="legend-item" style="margin-left: 30px;">
+                    <span>₱ To receive payment from Deel for regular holidays when you do not have a scheduled shift, please submit 8 hours in your timesheet with the note "Do not pay at 200% rate; did not work this day."</span>
+                </div>
+                <p><small>All holidays are based on official Presidential Proclamations for 2025</small></p>
             </div>
-            <p><small>All holidays are based on official Presidential Proclamations for 2025</small></p>
         </div>
 
         <div class="section">
@@ -798,6 +818,22 @@
             document.getElementById('manualHoursToggle').click();
         });
 
+        // Holiday Legend toggle
+        document.getElementById('holidayLegendToggle').addEventListener('click', function() {
+            const section = document.getElementById('holidayLegendSection');
+            const label = document.getElementById('holidayLegendLabel');
+            
+            section.style.display = section.style.display === 'none' ? 'block' : 'none';
+            this.classList.toggle('active');
+            
+            label.textContent = section.style.display === 'none' ? 
+                '🎉 Show Holiday Rates and Shift Differentials' : '🎉 Hide Holiday Rates and Shift Differentials';
+        });
+
+        document.getElementById('holidayLegendLabel').addEventListener('click', function() {
+            document.getElementById('holidayLegendToggle').click();
+        });
+
         // Update Exchange Rate button
         document.getElementById('updateRateBtn').addEventListener('click', updateExchangeRate);
 
@@ -814,12 +850,16 @@
             try {
                 await new Promise(resolve => setTimeout(resolve, 1500));
                 
-                // Simulate current market rates around 55.77
-                const simulatedRates = [55.71, 55.77, 55.82, 55.69, 55.85, 55.74];
-                const newRate = simulatedRates[Math.floor(Math.random() * simulatedRates.length)];
+                // Simulate current market rates around 55.77 USD to PHP
+                const simulatedUsdToPhpRates = [55.71, 55.77, 55.82, 55.69, 55.85, 55.74];
+                const newUsdToPhpRate = simulatedUsdToPhpRates[Math.floor(Math.random() * simulatedUsdToPhpRates.length)];
                 
-                window.USD_TO_PHP = newRate;
-                document.getElementById('exchangeRateValue').textContent = newRate.toFixed(2);
+                // Keep the internal rate as USD to PHP for math calculations
+                window.USD_TO_PHP = newUsdToPhpRate;
+                
+                // Display as PHP to USD (1 PHP = X USD)
+                const phpToUsdRate = (1 / newUsdToPhpRate).toFixed(4);
+                document.getElementById('exchangeRateValue').textContent = phpToUsdRate;
                 
                 const now = new Date();
                 const options = { 
@@ -834,7 +874,7 @@
                 document.getElementById('lastUpdated').textContent = phtTime;
                 
                 updateUSDConversion();
-                alert(`Exchange rate updated to 1 USD = ${newRate.toFixed(2)} PHP`);
+                alert(`Exchange rate updated to 1 PHP = ${phpToUsdRate} USD`);
                 
             } catch (error) {
                 console.error('Error updating exchange rate:', error);
@@ -901,6 +941,13 @@
             manualHoursSection.style.display = 'none';
             manualHoursToggle.classList.remove('active');
             manualHoursLabel.textContent = '🕐 Show Manual Hours Entry';
+            
+            const holidayLegendSection = document.getElementById('holidayLegendSection');
+            const holidayLegendToggle = document.getElementById('holidayLegendToggle');
+            const holidayLegendLabel = document.getElementById('holidayLegendLabel');
+            holidayLegendSection.style.display = 'none';
+            holidayLegendToggle.classList.remove('active');
+            holidayLegendLabel.textContent = '🎉 Show Holiday Rates and Shift Differentials';
             
             document.getElementById('breakdownContent').innerHTML = '<p>Add some shifts to see the breakdown</p>';
             document.getElementById('dateBreakdownContent').innerHTML = '<p>Add some shifts to see the date breakdown</p>';
@@ -1922,6 +1969,13 @@
 
         // Initialize calendar
         renderCalendar();
+        
+        // Initialize exchange rate display
+        function initializeExchangeRateDisplay() {
+            const phpToUsdRate = (1 / window.USD_TO_PHP).toFixed(4);
+            document.getElementById('exchangeRateValue').textContent = phpToUsdRate;
+        }
+        initializeExchangeRateDisplay();
     </script>
 </body>
 </html>
